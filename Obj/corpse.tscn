@@ -11,7 +11,7 @@ offsets = PackedFloat32Array(0.4074074, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_okn2r"]
-radius = 42.0
+radius = 31.016125
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_036xa"]
 radius = 54.08327
@@ -21,7 +21,7 @@ collision_layer = 32
 collision_mask = 5
 physics_material_override = SubResource("PhysicsMaterial_036xa")
 gravity_scale = 0.0
-linear_damp = 2.0
+linear_damp = 7.0
 angular_velocity = 0.34793139
 angular_damp = 2.0
 script = ExtResource("1_036xa")

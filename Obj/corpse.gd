@@ -24,8 +24,8 @@ func move(value: Vector2):
 	if value == Vector2(0,0):
 		var rot = randf_range(-360,360)
 		var vector = Vector2(cos(rot), sin(rot))
-		apply_central_impulse(vector * randi_range(-500,500))
+		apply_central_impulse(vector * 4000)
 		angular_velocity += randf_range(-90,90)
 	else:
-		apply_central_impulse(value * 300) 
+		apply_central_impulse(value * randf_range(0.01,1) * 2000) 
 		angular_velocity += randf_range(-90,90)

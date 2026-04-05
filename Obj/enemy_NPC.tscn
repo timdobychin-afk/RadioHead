@@ -1,0 +1,227 @@
+[gd_scene format=3 uid="uid://bq7k7a7o670rd"]
+
+[ext_resource type="Script" uid="uid://dlg0lw3640v47" path="res://Obj/enemy_npc.gd" id="1_o45yw"]
+[ext_resource type="Texture2D" uid="uid://ckxfruwcxefha" path="res://Images/Curcle.png" id="2_lc4rl"]
+[ext_resource type="Texture2D" uid="uid://s7ar2mj0geqr" path="res://Images/gun2.png" id="3_lc4rl"]
+[ext_resource type="Texture2D" uid="uid://dx7cr8u8li247" path="res://Images/Characterss/Character_EvilNPC1.1.png" id="4_lc4rl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yukip"]
+radius = 15.000002
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yukip"]
+height = 54.0
+
+[sub_resource type="Curve" id="Curve_yukip"]
+_limits = [0.0, 1000.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.27659574, 539.32587), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_yukip"]
+offsets = PackedFloat32Array(0, 0.32098764, 0.80246913)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_ih207"]
+offsets = PackedFloat32Array(0.09876543, 0.48765433, 0.80246913)
+colors = PackedColorArray(0.5208052, 0.111797325, 0, 1, 0.8627451, 0.5686275, 0.5686275, 1, 0.9645917, 0.6831817, 0.33179024, 1)
+
+[sub_resource type="Curve" id="Curve_lc4rl"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0.037234046, 0), 0.0, 0.0, 0, 0, Vector2(0.05319149, 100), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_s0nox"]
+offsets = PackedFloat32Array(0, 0.77160496, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_hkppt"]
+colors = PackedColorArray(0.5882353, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="Curve" id="Curve_rf232"]
+_data = [Vector2(1e-05, 0.26966298), 0.0, 0.0, 0, 0, Vector2(0.05851064, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_h2rm6"]
+offsets = PackedFloat32Array(0, 0.7839506, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.4814815, 0.4814815, 0.4814815, 0.4814815, 0, 0, 0, 0)
+
+[sub_resource type="Gradient" id="Gradient_x15tf"]
+offsets = PackedFloat32Array(0.2962963, 0.43209878, 0.6851852, 0.7654321)
+colors = PackedColorArray(0.32915857, 0.3291583, 0.3291585, 1, 0.4745098, 0.4745098, 0.4745098, 0, 0.80784315, 0.80784315, 0.80784315, 0, 1, 1, 1, 1)
+
+[node name="Enemy_NPC" type="CharacterBody2D" unique_id=338551049]
+collision_layer = 16
+collision_mask = 19
+motion_mode = 1
+script = ExtResource("1_o45yw")
+metadata/_custom_type_script = "uid://bssux2anvkjao"
+metadata/enemy = false
+
+[node name="shadow" type="Sprite2D" parent="." unique_id=1428659496]
+modulate = Color(0, 0, 0, 0.3019608)
+rotation = -1.5707964
+scale = Vector2(0.6197149, 0.6197149)
+texture = ExtResource("2_lc4rl")
+
+[node name="Weapon" type="Node2D" parent="." unique_id=245983438]
+
+[node name="Marker2D" type="Marker2D" parent="Weapon" unique_id=1002429962]
+position = Vector2(36.000004, -9)
+scale = Vector2(3.75, 0.36750028)
+
+[node name="sprite" type="Sprite2D" parent="Weapon" unique_id=443466455]
+modulate = Color(0.3553136, 0.35531354, 0.35531357, 1)
+position = Vector2(14, -10.999999)
+rotation = 1.6655663
+texture = ExtResource("3_lc4rl")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=327142593]
+rotation = -1.5707964
+scale = Vector2(2, 2)
+texture = ExtResource("4_lc4rl")
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=107405758]
+unique_name_in_owner = true
+rotation = -0.0036789288
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CircleShape2D_yukip")
+
+[node name="Area" type="Area2D" parent="." unique_id=1760576328]
+collision_layer = 8
+collision_mask = 12
+metadata/enemy = false
+
+[node name="Collision" type="CollisionShape2D" parent="Area" unique_id=292538358]
+shape = SubResource("CapsuleShape2D_yukip")
+debug_color = Color(0, 0.6, 0, 0)
+
+[node name="Damage" type="CPUParticles2D" parent="." unique_id=1939073950]
+emitting = false
+amount = 32
+lifetime = 0.2
+one_shot = true
+explosiveness = 0.94
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 277.23
+initial_velocity_max = 376.24
+damping_min = 1.98
+damping_max = 3.96
+damping_curve = SubResource("Curve_yukip")
+angle_min = -360.0
+angle_max = 360.0
+scale_amount_max = 15.0
+color_ramp = SubResource("Gradient_yukip")
+color_initial_ramp = SubResource("Gradient_ih207")
+
+[node name="View_sine" type="Node2D" parent="." unique_id=1413582156]
+
+[node name="Ray" type="RayCast2D" parent="View_sine" unique_id=1704050995]
+target_position = Vector2(500, 0)
+collision_mask = 3
+
+[node name="Ray2" type="RayCast2D" parent="View_sine" unique_id=1036982364]
+target_position = Vector2(434, 107)
+collision_mask = 3
+
+[node name="Ray3" type="RayCast2D" parent="View_sine" unique_id=586119345]
+target_position = Vector2(332, 156)
+collision_mask = 3
+
+[node name="Ray4" type="RayCast2D" parent="View_sine" unique_id=290450390]
+target_position = Vector2(99, 247)
+collision_mask = 3
+
+[node name="Ray6" type="RayCast2D" parent="View_sine" unique_id=2006874859]
+target_position = Vector2(488, 40)
+collision_mask = 3
+
+[node name="Ray7" type="RayCast2D" parent="View_sine" unique_id=1601720752]
+target_position = Vector2(223, 224)
+collision_mask = 3
+
+[node name="Ray8" type="RayCast2D" parent="View_sine" unique_id=564400956]
+target_position = Vector2(432, -99)
+collision_mask = 3
+
+[node name="Ray9" type="RayCast2D" parent="View_sine" unique_id=1837651826]
+target_position = Vector2(342, -154)
+collision_mask = 3
+
+[node name="Ray10" type="RayCast2D" parent="View_sine" unique_id=1638491115]
+target_position = Vector2(99, -224)
+collision_mask = 3
+
+[node name="Ray12" type="RayCast2D" parent="View_sine" unique_id=312802231]
+target_position = Vector2(478, -34)
+collision_mask = 3
+
+[node name="Ray13" type="RayCast2D" parent="View_sine" unique_id=1870583307]
+target_position = Vector2(223, -224)
+collision_mask = 3
+
+[node name="Dead_part" type="CPUParticles2D" parent="." unique_id=456013479]
+emitting = false
+amount = 48
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 257.43
+initial_velocity_max = 663.36
+damping_min = 10.0
+damping_max = 10.0
+damping_curve = SubResource("Curve_lc4rl")
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 4.0
+scale_amount_max = 12.0
+color = Color(1, 0, 0, 1)
+color_ramp = SubResource("Gradient_s0nox")
+color_initial_ramp = SubResource("Gradient_hkppt")
+
+[node name="Dead_part2" type="CPUParticles2D" parent="." unique_id=1449869181]
+emitting = false
+amount = 24
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.61
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 504.95
+initial_velocity_max = 742.57
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 12.0
+scale_amount_max = 24.0
+color = Color(1, 0, 0, 0.5764706)
+color_ramp = SubResource("Gradient_s0nox")
+color_initial_ramp = SubResource("Gradient_hkppt")
+
+[node name="Dead_part3" type="CPUParticles2D" parent="." unique_id=259777796]
+z_index = -1
+emitting = false
+amount = 48
+lifetime = 8.0
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 39.6
+initial_velocity_max = 257.42
+damping_min = 10.0
+damping_max = 10.0
+damping_curve = SubResource("Curve_lc4rl")
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 18.0
+scale_amount_max = 32.0
+scale_amount_curve = SubResource("Curve_rf232")
+color = Color(1, 0, 0, 1)
+color_ramp = SubResource("Gradient_h2rm6")
+color_initial_ramp = SubResource("Gradient_x15tf")
+
+[node name="Agent" type="NavigationAgent2D" parent="." unique_id=603992142]
+avoidance_enabled = true
+debug_use_custom = true
+
+[connection signal="area_entered" from="Area" to="." method="_on_area_area_entered"]

@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://cwgscxdt41bx6"]
+
+[ext_resource type="Texture2D" uid="uid://dw0saaegnbl4j" path="res://Images/Plaseholder/asopdASKOPDKAPSDJKOPS.png" id="1_7w0i5"]
+[ext_resource type="Script" uid="uid://xo82gfjbrnm7" path="res://Obj/player.gd" id="1_pl4x2"]
+[ext_resource type="Texture2D" uid="uid://ckxfruwcxefha" path="res://Images/Curcle.png" id="2_7hhm3"]
+[ext_resource type="Texture2D" uid="uid://cvcxrqvdn1rdf" path="res://Images/GUN24-export.png" id="3_7hhm3"]
+[ext_resource type="Texture2D" uid="uid://dlvej1vhpnwlm" path="res://Images/chelik.png" id="4_mqyn2"]
+[ext_resource type="Texture2D" uid="uid://chru11nwal7vy" path="res://Images/Plaseholder/asdsadasd.png" id="5_bnvjs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pl4x2"]
+radius = 27.018513
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7hhm3"]
+size = Vector2(76, 56)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7hhm3"]
+light_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_7hhm3"]
+offsets = PackedFloat32Array(0.23493975, 0.91566265)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mqyn2"]
+gradient = SubResource("Gradient_7hhm3")
+width = 255
+
+[node name="Player" type="CharacterBody2D" unique_id=1981590196]
+collision_layer = 2
+collision_mask = 3
+motion_mode = 1
+script = ExtResource("1_pl4x2")
+metadata/player = false
+
+[node name="shadow" type="Sprite2D" parent="." unique_id=2014054256]
+modulate = Color(0, 0, 0, 0.3019608)
+rotation = -1.5707964
+scale = Vector2(0.6197149, 0.6197149)
+texture = ExtResource("2_7hhm3")
+
+[node name="Weapon" type="Node2D" parent="." unique_id=1499413184]
+
+[node name="Marker2D" type="Marker2D" parent="Weapon" unique_id=1068407984]
+position = Vector2(35, -8)
+scale = Vector2(3.75, 0.36750028)
+
+[node name="sprite" type="Sprite2D" parent="Weapon" unique_id=432771013]
+modulate = Color(0.3553136, 0.35531354, 0.35531357, 1)
+position = Vector2(14, -10.999999)
+rotation = 1.6655663
+scale = Vector2(2, 2)
+texture = ExtResource("3_7hhm3")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1456022434]
+rotation = -1.5707964
+scale = Vector2(2, 2)
+texture = ExtResource("4_mqyn2")
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=838957681]
+shape = SubResource("CircleShape2D_pl4x2")
+debug_color = Color(0, 0.6, 0.69803923, 0)
+
+[node name="Light" type="PointLight2D" parent="." unique_id=1717732264]
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 3.1
+texture = ExtResource("1_7w0i5")
+texture_scale = 33.65
+
+[node name="Reload_time" type="Timer" parent="." unique_id=86499965]
+wait_time = 0.4
+one_shot = true
+
+[node name="melee" type="Node2D" parent="." unique_id=486697816]
+
+[node name="Sprite" type="Sprite2D" parent="melee" unique_id=2047854491]
+visible = false
+position = Vector2(38, -1)
+scale = Vector2(3, 3)
+texture = ExtResource("5_bnvjs")
+
+[node name="Area" type="Area2D" parent="melee" unique_id=1520563991]
+collision_layer = 4
+collision_mask = 0
+metadata/melee = false
+metadata/dmg = 25
+
+[node name="Collision" type="CollisionShape2D" parent="melee/Area" unique_id=482272682]
+position = Vector2(38, 0)
+shape = SubResource("RectangleShape2D_7hhm3")
+disabled = true
+debug_color = Color(0.92941177, 0.21960784, 0.38431373, 0)
+
+[node name="line" type="Sprite2D" parent="." unique_id=1498223197]
+z_index = 4096
+material = SubResource("CanvasItemMaterial_7hhm3")
+scale = Vector2(0.26666668, 2)
+texture = SubResource("GradientTexture1D_mqyn2")
+centered = false
+offset = Vector2(0, -0.5)
+
+[connection signal="timeout" from="Reload_time" to="." method="_on_reload"]

@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://c7vx83wo7dscg"]
+
+[ext_resource type="Script" uid="uid://cued7k4pdpevc" path="res://Obj/corpse.gd" id="1_036xa"]
+[ext_resource type="Texture2D" uid="uid://bc7vgty0ddmin" path="res://Images/Characterss/Character_EvilNPCDead1.1.png" id="2_036xa"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_036xa"]
+bounce = 1.0
+
+[sub_resource type="Gradient" id="Gradient_036xa"]
+offsets = PackedFloat32Array(0.4074074, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_okn2r"]
+radius = 42.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_036xa"]
+radius = 54.08327
+
+[node name="corpse" type="RigidBody2D" unique_id=1083866865]
+collision_layer = 32
+collision_mask = 5
+physics_material_override = SubResource("PhysicsMaterial_036xa")
+gravity_scale = 0.0
+linear_damp = 2.0
+angular_velocity = 0.34793139
+angular_damp = 2.0
+script = ExtResource("1_036xa")
+metadata/corpse = false
+
+[node name="Blood" type="CPUParticles2D" parent="." unique_id=639458609]
+z_index = -2
+amount = 16
+lifetime = 5.0
+speed_scale = 10.0
+gravity = Vector2(0, 0)
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 10.0
+scale_amount_max = 30.0
+color_ramp = SubResource("Gradient_036xa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1232599150]
+shape = SubResource("CircleShape2D_okn2r")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1661554537]
+z_index = -1
+scale = Vector2(2, 2)
+texture = ExtResource("2_036xa")
+
+[node name="Area" type="Area2D" parent="." unique_id=1238528823]
+position = Vector2(0.6816597, -0.3183403)
+collision_layer = 4
+collision_mask = 5
+metadata/corpse = 0
+
+[node name="Collision" type="CollisionShape2D" parent="Area" unique_id=1800151124]
+position = Vector2(-0.6816597, 0.3183403)
+shape = SubResource("CircleShape2D_036xa")
+
+[connection signal="area_entered" from="Area" to="." method="_on_area_area_entered"]

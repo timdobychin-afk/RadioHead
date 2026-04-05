@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://c8eje8ky71kmx"]
+
+[ext_resource type="Script" uid="uid://q4ckxg37f3vo" path="res://Obj/dodge.gd" id="1_lg38k"]
+[ext_resource type="FontFile" uid="uid://hf34ttnqsoma" path="res://Other/Westhorn-Italic.otf" id="2_fshrr"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lg38k"]
+light_mode = 1
+
+[node name="dodge" type="Node2D" unique_id=226059366]
+script = ExtResource("1_lg38k")
+
+[node name="Label" type="Label" parent="." unique_id=1254337472]
+z_index = 20
+material = SubResource("CanvasItemMaterial_lg38k")
+offset_left = -34.0
+offset_top = -18.0
+offset_right = 34.0
+offset_bottom = 19.0
+rotation = -0.03834414
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("2_fshrr")
+theme_override_font_sizes/font_size = 32
+text = "MISS!!"
+
+[node name="ColorRect" type="ColorRect" parent="Label" unique_id=175546031]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.60897
+offset_top = -18.5
+offset_right = 62.049973
+offset_bottom = 15.211853
+pivot_offset_ratio = Vector2(0.5, 0.5)
+color = Color(0, 0, 0, 0.4392157)

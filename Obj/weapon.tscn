@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://ct66w5ewyoomk"]
+
+[ext_resource type="Script" uid="uid://d2qpk1dpjdas8" path="res://Obj/weapon.gd" id="1_cloqy"]
+[ext_resource type="Texture2D" uid="uid://bhw6awiirxqa0" path="res://Images/Plaseholder/Сырнгые палочки папа может 400 грамм.png" id="1_p8v7f"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cloqy"]
+bounce = 1.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g8vds"]
+radius = 7.0
+height = 64.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_588og"]
+radius = 34.0147
+
+[node name="Weapon" type="RigidBody2D" unique_id=1576643075]
+collision_layer = 0
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_cloqy")
+gravity_scale = 0.0
+center_of_mass_mode = 1
+center_of_mass = Vector2(0, 5)
+linear_damp = 3.0
+angular_damp = 3.0
+script = ExtResource("1_cloqy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1127927763]
+shape = SubResource("CapsuleShape2D_g8vds")
+debug_color = Color(0, 0.6, 0.69803923, 0)
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=109361525]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(17, -1)
+scale = Vector2(1.5200007, 1)
+texture = ExtResource("1_p8v7f")
+
+[node name="area" type="Area2D" parent="." unique_id=1706255123]
+collision_layer = 8
+collision_mask = 15
+metadata/weap = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area" unique_id=1011919121]
+shape = SubResource("CircleShape2D_588og")
+debug_color = Color(0, 0.6, 0.69803923, 0)
+
+[connection signal="area_entered" from="area" to="." method="_on_area_area_entered"]
+[connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]
